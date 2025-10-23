@@ -9,10 +9,15 @@ int main() {
     std::cout << "Enter regex: ";
     std::cin >> regex;
 
-    NFA nfa(regex, true);
+    NFA nfa(regex);
 
-    std::cout << nfa.ContainsPrefix("abacb") << '\n';
-    std::cout << nfa.ContainsPrefix("cb") << '\n';
+    std::cout << "Minimal:\n";
+    nfa.ToMinimal();
+    nfa.Print();
+    
+    std::cout << "Complement:\n";
+    nfa.ToComplement();
+    nfa.Print();
   } catch (const std::exception &e) {
     std::cerr << "Error: " << e.what() << std::endl;
   }
